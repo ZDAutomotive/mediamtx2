@@ -5,3 +5,5 @@
 /internal/servers/hls/hls.min.js
 /internal/protocols/rpicamera/exe/text_font.h
 /internal/protocols/rpicamera/exe/exe
+
+mediamtx_*

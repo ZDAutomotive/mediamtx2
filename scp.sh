@@ -1,0 +1,1 @@
+scp mediamtx_v1.8.3_zd ubuntu@test.zddata.cloud:/home/ubuntu/mediamtx_linux_amd64/

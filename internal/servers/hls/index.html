@@ -18,6 +18,9 @@ html, body {
 	height: 100%;
 	background: rgb(30, 30, 30);
 }
+video::-webkit-media-controls-timeline {
+    display: none !important;
+}
 #message {
 	position: absolute;
 	left: 0;
@@ -51,6 +54,10 @@ const retryPause = 2000;
 
 const video = document.getElementById('video');
 const message = document.getElementById('message');
+
+video.onplay= function(){
+	video.currentTime = video.duration-1
+}
 
 let defaultControls = false;
 
