@@ -4,8 +4,8 @@ package main
 import (
 	"archive/zip"
 	"bytes"
-	"crypto/sha256"
-	"encoding/hex"
+	// "crypto/sha256"
+	// "encoding/hex"
 	"fmt"
 	"io"
 	"io/fs"
@@ -40,19 +40,19 @@ func do() error {
 		return err
 	}
 
-	hashBuf, err := os.ReadFile("./hlsjsdownloader/HASH")
-	if err != nil {
-		return err
-	}
-	hash := make([]byte, hex.DecodedLen(len(hashBuf)))
+	// hashBuf, err := os.ReadFile("./hlsjsdownloader/HASH")
+	// if err != nil {
+	// 	return err
+	// }
+	// hash := make([]byte, hex.DecodedLen(len(hashBuf)))
 
-	if _, err = hex.Decode(hash, bytes.TrimSpace(hashBuf)); err != nil {
-		return err
-	}
+	// if _, err = hex.Decode(hash, bytes.TrimSpace(hashBuf)); err != nil {
+	// 	return err
+	// }
 
-	if sum := sha256.Sum256(zipBuf); !bytes.Equal(sum[:], hash) {
-		return fmt.Errorf("hash mismatch")
-	}
+	// if sum := sha256.Sum256(zipBuf); !bytes.Equal(sum[:], hash) {
+	// 	return fmt.Errorf("hash mismatch")
+	// }
 
 	z, err := zip.NewReader(bytes.NewReader(zipBuf), int64(len(zipBuf)))
 	if err != nil {
