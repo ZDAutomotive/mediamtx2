@@ -683,8 +683,24 @@ paths:
   # example:
   # my_camera:
   #   source: rtsp://my_camera
+  camera:
+    source: rtsp://admin:123@192.168.1.121:554
+    sourceOnDemand: yes
+    rtspTransport: tcp
+  camera2:
+    source: rtsp://admin:123@192.168.1.186:554
+    sourceOnDemand: yes
+    rtspTransport: tcp
+  "~^camera3/(.+)$":
+    source: rtsp://admin:123@192.168.1.121:554/?stream=0
+    sourceOnDemand: yes
+    rtspTransport: tcp
+  test:
+    source: rtsp://root:pass@192.168.1.90:554/axis-media/media.amp?camera=1&videocodec=h264
+    sourceOnDemand: yes
+    rtspTransport: tcp
   "~^axis/(.+)/(.+)/(.+)/(.+)$":
-    source: rtsp://$G2:$G3@zd-proxy:3310/axis-media/media.amp?--id=$G1&--ip=$G4&--port=554&camera=1
+    source: rtsp://$G2:$G3@zd-proxy:3310/axis-media/media.amp?--id=$G1&--ip=$G4&--port=554&camera=1&videocodec=h264
     sourceOnDemand: yes
     rtspTransport: tcp
   "~^proxy/(.+)/(.+)/(.+)/(.+)$":

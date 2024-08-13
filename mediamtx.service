@@ -1,0 +1,14 @@
+[Unit]
+After=network.target
+
+[Service]
+ExecStart=/root/mediamtx/start.sh
+Restart=on-failure
+RestartSec=3s
+StartLimitInterval=0
+StandardOutput=null
+# StandardError=journal
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target
