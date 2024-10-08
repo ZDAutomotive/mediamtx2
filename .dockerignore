@@ -4,5 +4,5 @@
 /coverage*.txt
 /apidocs/*.html
 /internal/core/VERSION
-/internal/servers/hls/hls.min.js
-/internal/staticsources/rpicamera/mtxrpicam_*
+# /internal/servers/hls/hls.min.js
+# /internal/staticsources/rpicamera/mtxrpicam_*

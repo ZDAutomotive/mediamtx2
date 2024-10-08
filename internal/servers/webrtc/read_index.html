@@ -50,6 +50,41 @@ const retryPause = 2000;
 const video = document.getElementById('video');
 const message = document.getElementById('message');
 
+//ZD snapshot
+let snapshoting = false
+window.addEventListener('message', function (event) {
+	const { snapshotName } = event.data;
+	if (snapshotName && !snapshoting){
+		snapshoting =true
+		video.pause()
+		setTimeout(()=>{
+			try {
+				snapshot(snapshotName)
+				video.play()
+			} catch (error) {
+				
+			}
+			snapshoting = false
+		},100)
+	}
+}, false)
+
+
+function snapshot(fileName) {
+    // 创建一个canvas元素，尺寸与video相同
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    // 绘制当前video帧到canvas上
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // 将canvas内容转换为PNG图像格式的DataURL
+    const imageURL = canvas.toDataURL('image/png');
+    window.parent.postMessage({ imageURL, fileName }, "*")
+}
+
 let nonAdvertisedCodecs = [];
 let pc = null;
 let restartTimeout = null;
