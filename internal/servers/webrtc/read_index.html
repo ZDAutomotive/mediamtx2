@@ -61,17 +61,11 @@ window.addEventListener('message', function (event) {
 		setTimeout(()=>{
 			try {
 				snapshot(snapshotName)
+				video.play()
 			} catch (error) {
 				console.log(error)
 			}
-			setTimeout(()=>{
-				try {
-					video.play()
-				} catch (error) {
-					
-				}
-				snapshoting = false
-			},1000)
+			snapshoting = false
 		},50)
 	}
 }, false)
